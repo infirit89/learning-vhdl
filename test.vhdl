@@ -3,7 +3,6 @@ end entity;
 
 architecture sim of test is
 	signal test1 : integer := 0;
-	signal test2 : integer := 10;
 begin
 	process is
 	begin
@@ -13,15 +12,15 @@ begin
 
 	process is
 	begin
-		wait until test1 = test2;
-		report "They equal" & integer'image(test1);
-		wait;
+		if test1 = 14 then
+			report "It do be 14";
+		elsif test1 > 14 then
+			wait;
+		else
+			report "It don't be bigger than 14";
+		end if;
+
+		wait on test1;
 	end process;
 
-	process is
-	begin
-		wait on test1;
-		report "It changed" & integer'image(test1);
-		wait;
-	end process;
 end architecture;
